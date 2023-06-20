@@ -19,5 +19,5 @@ parsed_data AS (
   FROM source_data
 )
 
-SELECT DISTINCT * FROM parsed_data
+SELECT * FROM parsed_data
 WHERE timestamp IS NOT NULL

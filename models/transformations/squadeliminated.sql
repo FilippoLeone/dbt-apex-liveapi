@@ -10,7 +10,7 @@ parsed_data AS (
   SELECT
     TIMESTAMP_SECONDS(CAST(JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS INT64)) AS timestamp,
     JSON_EXTRACT_SCALAR(jsondata, '$.category') AS category,
-    JSON_EXTRACT_ARRAY(jsondata, '$.players') AS players
+    JSON_EXTRACT_SCALAR(jsondata, '$.players') AS players
   FROM source_data
   WHERE JSON_EXTRACT_SCALAR(jsondata, '$.category') = 'squadEliminated'
 ),

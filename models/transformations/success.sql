@@ -1,7 +1,7 @@
 WITH source_data AS (
   SELECT
     `data`,
-    CAST(`data` AS JSON) AS jsondata
+    `data` AS jsondata
   FROM {{ ref('json_table') }}
 ),
 

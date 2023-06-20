@@ -3,6 +3,6 @@ version: 2
 sources:
   - name: pubsub
     tables:
-  - name: apex
-      columns:
-        - name: data
+      - name: apex
+        columns:
+          - name: data

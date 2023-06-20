@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', sort='timestamp') }}
 
 WITH source_data AS (
   SELECT

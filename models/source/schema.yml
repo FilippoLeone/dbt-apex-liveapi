@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: pubsub
+    database: "{{ var('gcp_project_id') }}"
+    schema: pubsub
+    tables:
+      - name: apex
+
+models:
+  - name: json_table
+    description: Players data from raw JSON
+    columns:
+      - name: data
+        description: The raw json data

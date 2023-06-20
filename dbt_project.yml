@@ -9,6 +9,8 @@ config-version: 2
 # This setting configures which "profile" dbt uses for this project.
 profile: 'apexliveapi'
 
+vars:
+  gcp_project_id: ${{ secrets.DBT_GOOGLE_PROJECT }}
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
@@ -35,3 +37,4 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+

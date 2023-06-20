@@ -2,20 +2,34 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
+  - name: players
+    description: Extracted players data from raw JSON
     columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
+      - name: playerToken
+        description: The token associated with the player
+      - name: name
+        description: The name of the player
+      - name: teamId
+        description: The team ID of the player
+      - name: nucleusHash
+        description: The nucleus hash associated with the player
+      - name: hardwareName
+        description: The name of the hardware the player is using
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
+  - name: success
+    description: Status of the operation
     columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
+      - name: success
+        description: Boolean value indicating if the operation was successful or not
+
+  - name: init
+    description: Initialization data from raw JSON
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: category
+        description: The category of the event
+      - name: gameVersion
+        description: The game version associated with the event
+      - name: apiVersion
+        description: The API version associated with the event

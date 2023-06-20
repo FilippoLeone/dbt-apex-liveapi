@@ -1,10 +1,10 @@
-name: scheduled_run
+name: dbt_deploy
 on:
   push:
       branches:
         - main
 env:
-  DBT_PROFILES_DIR: ./
+  DBT_PROFILES_DIR: ./apexliveapi
 
   DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
   DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}

@@ -23,5 +23,5 @@ players_unnested AS (
   FROM players, UNNEST(players_array) AS player
 )
 
-SELECT * FROM players_unnested
+SELECT DISTINCT * FROM players_unnested
 WHERE playerToken IS NOT NULL

@@ -24,5 +24,5 @@ parsed_data AS (
   WHERE JSON_EXTRACT_SCALAR(jsondata, '$.category') = 'playerConnected'
 )
 
-SELECT * FROM parsed_data
+SELECT DISTINCT * FROM parsed_data
 WHERE timestamp IS NOT NULL

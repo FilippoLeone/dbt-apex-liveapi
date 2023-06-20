@@ -41,5 +41,5 @@ parsed_winners_data AS (
   FROM winners_data
 )
 
-SELECT * FROM parsed_winners_data
+SELECT DISTINCT * FROM parsed_winners_data
 WHERE timestamp IS NOT NULL

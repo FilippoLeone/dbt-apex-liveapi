@@ -1,0 +1,39 @@
+name: scheduled_run
+on:
+  push:
+      branches:
+        - main
+env:
+  DBT_PROFILES_DIR: ./
+
+  DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
+  DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}
+  # The DBT_GOOGLE_BIGQUERY_KEYFILE_PROD secret will be written to a json file below
+  DBT_GOOGLE_BIGQUERY_KEYFILE: ./dbt-service-account.json
+
+jobs:
+  scheduled_run:
+    name: scheduled_run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: "3.8.x"
+
+      - name: Authenticate using service account
+        run: 'echo "$KEYFILE" > ./dbt-service-account.json'
+        shell: bash
+        env:
+          KEYFILE: ${{secrets.DBT_GOOGLE_BIGQUERY_KEYFILE}}
+
+      - name: Install dependencies
+        run: |
+          pip install dbt-bigquery
+          dbt deps
+      
+      - name: Run dbt models
+        run: dbt run

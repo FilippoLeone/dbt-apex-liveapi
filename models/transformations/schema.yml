@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: players
+  - name: customlobby
     description: Extracted players data from raw JSON
     columns:
       - name: playerToken

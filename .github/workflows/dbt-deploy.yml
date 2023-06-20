@@ -23,7 +23,15 @@ concurrency:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      DBT_PROFILES_DIR: ./
+      DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
+      DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}
+      DBT_GOOGLE_BIGQUERY_KEYFILE: ./dbt-service-account.json
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -33,7 +41,7 @@ jobs:
           python-version: "3.8.x"
 
       - name: Authenticate using service account
-        run: 'echo "$KEYFILE" > ./dbt-service-account.json'
+        run: 'echo "$KEYFILE" > $DBT_GOOGLE_BIGQUERY_KEYFILE'
         shell: bash
         env:
           KEYFILE: ${{secrets.DBT_GOOGLE_BIGQUERY_KEYFILE}}

@@ -1,17 +1,17 @@
 WITH source_data AS (
   SELECT
-    *,
-    CAST(json_string AS JSON) AS json
+    `data`,
+    CAST(`data` AS JSON) AS jsondata
   FROM {{ ref('json_table') }}
 ),
 
 parsed_data AS (
   SELECT
-    json_extract_scalar(json, '$.playerToken') AS playerToken,
-    json_extract_scalar(json, '$.players[0].name') AS name,
-    CAST(json_extract_scalar(json, '$.players[0].teamId') AS INT64) AS teamId,
-    json_extract_scalar(json, '$.players[0].nucleusHash') AS nucleusHash,
-    json_extract_scalar(json, '$.players[0].hardwareName') AS hardwareName
+    JSON_EXTRACT_SCALAR(jsondata, '$.playerToken') AS playerToken,
+    JSON_EXTRACT_SCALAR(jsondata, '$.players[0].name') AS name,
+    CAST(JSON_EXTRACT_SCALAR(jsondata, '$.players[0].teamId') AS INT64) AS teamId,
+    JSON_EXTRACT_SCALAR(jsondata, '$.players[0].nucleusHash') AS nucleusHash,
+    JSON_EXTRACT_SCALAR(jsondata, '$.players[0].hardwareName') AS hardwareName
   FROM source_data
 )
 

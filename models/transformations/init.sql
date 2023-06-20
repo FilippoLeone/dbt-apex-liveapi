@@ -1,19 +1,19 @@
 WITH source_data AS (
   SELECT
-    *,
-    CAST(json_string AS JSON) AS json
+    `data`,
+    CAST(`data` AS JSON) AS jsondata
   FROM {{ ref('json_table') }}
 ),
 
 parsed_data AS (
   SELECT
-    json_extract_scalar(json, '$.timestamp') AS timestamp,
-    json_extract_scalar(json, '$.category') AS category,
-    json_extract_scalar(json, '$.gameVersion') AS gameVersion,
+    JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS timestamp,
+    JSON_EXTRACT_SCALAR(jsondata, '$.category') AS category,
+    JSON_EXTRACT_SCALAR(jsondata, '$.gameVersion') AS gameVersion,
     STRUCT(
-      CAST(json_extract_scalar(json, '$.apiVersion.majorNum') AS INT64) AS majorNum,
-      CAST(json_extract_scalar(json, '$.apiVersion.minorNum') AS INT64) AS minorNum,
-      CAST(json_extract_scalar(json, '$.apiVersion.buildStamp') AS INT64) AS buildStamp
+      CAST(JSON_EXTRACT_SCALAR(jsondata, '$.apiVersion.majorNum') AS INT64) AS majorNum,
+      CAST(JSON_EXTRACT_SCALAR(jsondata, '$.apiVersion.minorNum') AS INT64) AS minorNum,
+      CAST(JSON_EXTRACT_SCALAR(jsondata, '$.apiVersion.buildStamp') AS INT64) AS buildStamp
     ) AS apiVersion
   FROM source_data
 )

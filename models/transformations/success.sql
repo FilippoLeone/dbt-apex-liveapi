@@ -1,13 +1,13 @@
 WITH source_data AS (
   SELECT
-    *,
-    CAST(json_string AS JSON) AS json
+    `data`,
+    CAST(`data` AS JSON) AS jsondata
   FROM {{ ref('json_table') }}
 ),
 
 parsed_data AS (
   SELECT
-    CAST(json_extract_scalar(json, '$.success') AS BOOL) AS success
+    CAST(JSON_EXTRACT_SCALAR(jsondata, '$.success') AS BOOL) AS success
   FROM source_data
 )
 

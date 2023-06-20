@@ -7,7 +7,7 @@ apexliveapi:
       keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
       project: "{{ env_var('DBT_GOOGLE_PROJECT') }}"
       dataset: "{{ env_var('DBT_GOOGLE_BIGQUERY_DATASET') }}"
-      threads: 32
+      threads: 4
       timeout_seconds: 300
       priority: interactive
 

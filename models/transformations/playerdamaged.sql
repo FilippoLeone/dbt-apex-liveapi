@@ -19,8 +19,8 @@ parsed_data AS (
     JSON_EXTRACT_SCALAR(jsondata, '$.victim.nucleusHash') AS victim_nucleusHash,
     JSON_EXTRACT_SCALAR(jsondata, '$.victim.hardwareName') AS victim_hardwareName,
     JSON_EXTRACT_SCALAR(jsondata, '$.victim.character') AS victim_character,
-    JSON_EXTRACT_SCALAR(jsondata, '$.item') AS item,
-    CAST(JSON_EXTRACT_SCALAR(jsondata, '$.damage') AS FLOAT64) AS damage
+    JSON_EXTRACT_SCALAR(jsondata, '$.attacker.weapon') AS weapon,
+    CAST(JSON_EXTRACT_SCALAR(jsondata, '$.attacker.damageInflicted') AS FLOAT64) AS damage
   FROM source_data
   WHERE JSON_EXTRACT_SCALAR(jsondata, '$.category') = 'playerDamaged'
 )

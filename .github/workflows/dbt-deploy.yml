@@ -8,7 +8,6 @@ env:
 
   DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
   DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}
-  # The DBT_GOOGLE_BIGQUERY_KEYFILE_PROD secret will be written to a json file below
   DBT_GOOGLE_BIGQUERY_KEYFILE: ./dbt-service-account.json
 
 jobs:
@@ -37,3 +36,20 @@ jobs:
       
       - name: Run dbt models
         run: dbt run
+
+      - name: Generate dbt docs
+        run: dbt docs generate
+
+      - name: Move docs to docs folder
+        run: mv target/ docs/
+
+      - name: Git setup
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit and push dbt docs
+        run: |
+          git add docs/
+          git commit -m "Update dbt docs"
+          git push origin main

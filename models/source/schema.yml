@@ -1,8 +1,7 @@
 version: 2
 
 sources:
-  - name: pubsub
-    database: {{ env_var('DBT_GOOGLE_PROJECT') }}
+  - name: json
     schema: pubsub
     tables:
       - name: apex

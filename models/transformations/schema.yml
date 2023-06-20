@@ -33,3 +33,385 @@ models:
         description: The game version associated with the event
       - name: apiVersion
         description: The API version associated with the event
+
+  - name: playerassist
+    description: Extracted assistant and victim data from raw JSON for 'playerAssist' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: assistant_name
+        description: The name of the assistant player
+      - name: assistant_teamId
+        description: The team ID of the assistant player
+      - name: assistant_pos_x
+        description: The x position of the assistant player
+      - name: assistant_pos_y
+        description: The y position of the assistant player
+      - name: assistant_pos_z
+        description: The z position of the assistant player
+      - name: assistant_angles_y
+        description: The y angle of the assistant player
+      - name: assistant_nucleusHash
+        description: The nucleus hash associated with the assistant player
+      - name: assistant_hardwareName
+        description: The hardware name the assistant player is using
+      - name: assistant_character
+        description: The character chosen by the assistant player
+      - name: victim_name
+        description: The name of the victim player
+      - name: victim_teamId
+        description: The team ID of the victim player
+      - name: victim_pos_x
+        description: The x position of the victim player
+      - name: victim_pos_y
+        description: The y position of the victim player
+      - name: victim_pos_z
+        description: The z position of the victim player
+      - name: victim_angles_y
+        description: The y angle of the victim player
+      - name: victim_nucleusHash
+        description: The nucleus hash associated with the victim player
+      - name: victim_hardwareName
+        description: The hardware name the victim player is using
+      - name: victim_character
+        description: The character chosen by the victim player
+
+  - name: squadeliminated
+    description: Extracted players data from raw JSON for 'squadEliminated' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: category
+        description: The category of the event
+      - name: player_name
+        description: The name of the player
+      - name: player_teamId
+        description: The team ID of the player
+      - name: player_pos_x
+        description: The x position of the player
+      - name: player_pos_y
+        description: The y position of the player
+      - name: player_pos_z
+        description: The z position of the player
+      - name: player_angles_y
+        description: The y angle of the player
+      - name: player_currentHealth
+        description: The current health of the player
+      - name: player_maxHealth
+        description: The maximum health of the player
+      - name: player_shieldMaxHealth
+        description: The maximum shield health of the player
+      - name: player_nucleusHash
+        description: The nucleus hash associated with the player
+      - name: player_hardwareName
+        description: The hardware name the player is using
+      - name: player_teamName
+        description: The team name the player is part of
+      - name: player_character
+        description: The character chosen by the player
+      - name: player_skin
+        description: The skin of the character chosen by the player
+
+  - name: playerkilled
+    description: Extracted players data from raw JSON for 'playerKilled' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: attacker_name
+        description: The name of the attacker
+      - name: attacker_teamId
+        description: The team ID of the attacker
+      - name: attacker_pos_x
+        description: The x position of the attacker
+      - name: attacker_pos_y
+        description: The y position of the attacker
+      - name: attacker_pos_z
+        description: The z position of the attacker
+      - name: attacker_angles_y
+        description: The y angle of the attacker
+      - name: attacker_nucleusHash
+        description: The nucleus hash associated with the attacker
+      - name: attacker_hardwareName
+        description: The hardware name the attacker is using
+      - name: attacker_character
+        description: The character chosen by the attacker
+      - name: victim_name
+        description: The name of the victim
+      - name: victim_teamId
+        description: The team ID of the victim
+      - name: victim_pos_x
+        description: The x position of the victim
+      - name: victim_pos_y
+        description: The y position of the victim
+      - name: victim_pos_z
+        description: The z position of the victim
+      - name: victim_angles_y
+        description: The y angle of the victim
+      - name: victim_nucleusHash
+        description: The nucleus hash associated with the victim
+      - name: victim_hardwareName
+        description: The hardware name the victim is using
+      - name: victim_character
+        description: The character chosen by the victim
+      - name: awardedTo_name
+        description: The name of the player the kill was awarded to
+      - name: awardedTo_teamId
+        description: The team ID of the player the kill was awarded to
+      - name: awardedTo_pos_x
+        description: The x position of the player the kill was awarded to
+      - name: awardedTo_pos_y
+        description: The y position of the player the kill was awarded to
+      - name: awardedTo_pos_z
+        description: The z position of the player the kill was awarded to
+      - name: awardedTo_angles_y
+        description: The y angle of the player the kill was awarded to
+      - name: awardedTo_nucleusHash
+        description: The nucleus hash associated with the player the kill was awarded to
+      - name: awardedTo_hardwareName
+        description: The hardware name the player the kill was awarded to is using
+      - name: awardedTo_character
+        description: The character chosen by the player the kill was awarded to
+      - name: weapon
+        description: The weapon used to kill the victim
+
+  - name: playerdamaged
+    description: Extracted players data from raw JSON for 'playerDamaged' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: attacker_name
+        description: The name of the attacker
+      - name: attacker_teamId
+        description: The team ID of the attacker
+      - name: attacker_nucleusHash
+        description: The nucleus hash associated with the attacker
+      - name: attacker_hardwareName
+        description: The hardware name the attacker is using
+      - name: attacker_character
+        description: The character chosen by the attacker
+      - name: victim_name
+        description: The name of the victim
+      - name: victim_teamId
+        description: The team ID of the victim
+      - name: victim_nucleusHash
+        description: The nucleus hash associated with the victim
+      - name: victim_hardwareName
+        description: The hardware name the victim is using
+      - name: victim_character
+        description: The character chosen by the victim
+      - name: weapon
+        description: The weapon used to damage the victim
+      - name: damage
+        description: The amount of damage inflicted on the victim by the attacker
+
+  - name: playerconnected
+    description: Extracted players data from raw JSON for 'playerConnected' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: player_name
+        description: The name of the player
+      - name: player_teamId
+        description: The team ID of the player
+      - name: player_pos_x
+        description: The X position of the player
+      - name: player_pos_y
+        description: The Y position of the player
+      - name: player_pos_z
+        description: The Z position of the player
+      - name: player_nucleusHash
+        description: The nucleus hash associated with the player
+      - name: player_hardwareName
+        description: The hardware name the player is using
+      - name: player_teamName
+        description: The team name of the player
+      - name: player_squadIndex
+        description: The squad index of the player
+      - name: player_character
+        description: The character chosen by the player
+      - name: player_skin
+        description: The skin chosen by the player
+
+  - name: observerswitched
+    description: Extracted observer data from raw JSON for 'observerSwitched' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: observer_name
+        description: The name of the observer
+      - name: observer_teamId
+        description: The team ID of the observer
+      - name: observer_pos_x
+        description: The X position of the observer
+      - name: observer_pos_y
+        description: The Y position of the observer
+      - name: observer_pos_z
+        description: The Z position of the observer
+      - name: observer_angles_x
+        description: The X angle of the observer
+      - name: observer_angles_y
+        description: The Y angle of the observer
+      - name: observer_angles_z
+        description: The Z angle of the observer
+      - name: observer_nucleusHash
+        description: The nucleus hash associated with the observer
+      - name: observer_hardwareName
+        description: The hardware name the observer is using
+      - name: observer_teamName
+        description: The team name of the observer
+      - name: observer_character
+        description: The character chosen by the observer
+      - name: observer_skin
+        description: The skin chosen by the observer
+      - name: target_name
+        description: The name of the target
+      - name: target_teamId
+        description: The team ID of the target
+      - name: target_pos_x
+        description: The X position of the target
+      - name: target_pos_y
+        description: The Y position of the target
+      - name: target_pos_z
+        description: The Z position of the target
+      - name: target_angles_y
+        description: The Y angle of the target
+      - name: target_currentHealth
+        description: The current health of the target
+      - name: target_maxHealth
+        description: The maximum health of the target
+      - name: target_shieldHealth
+        description: The shield health of the target
+      - name: target_shieldMaxHealth
+        description: The maximum shield health of the target
+      - name: target_nucleusHash
+        description: The nucleus hash associated with the target
+      - name: target_hardwareName
+        description: The hardware name the target is using
+      - name: target_teamName
+        description: The team name of the target
+      - name: target_squadIndex
+        description: The squad index of the target
+      - name: target_character
+        description: The character chosen by the target
+      - name: target_skin
+        description: The skin chosen by the target
+      - name: targetTeam
+        description: The team of the target
+
+  - name: matchstateend
+    description: Extracted match data from raw JSON for 'matchStateEnd' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: state
+        description: The state of the match at the end
+      - name: winner_name
+        description: The name of the winning player
+      - name: winner_teamId
+        description: The team ID of the winning player
+      - name: winner_pos_x
+        description: The X position of the winning player
+      - name: winner_pos_y
+        description: The Y position of the winning player
+      - name: winner_pos_z
+        description: The Z position of the winning player
+      - name: winner_angles_y
+        description: The Y angle of the winning player
+      - name: winner_nucleusHash
+        description: The nucleus hash associated with the winning player
+      - name: winner_hardwareName
+        description: The hardware name the winning player is using
+      - name: winner_character
+        description: The character chosen by the winning player
+
+  - name: matchsetup
+    description: Extracted match data from raw JSON for 'matchSetup' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: category
+        description: The category of the event
+      - name: map
+        description: The map where the match is being set up
+      - name: playlistName
+        description: The name of the playlist for the match
+      - name: playlistDesc
+        description: The description of the playlist for the match
+      - name: datacenter
+        description: The name of the datacenter where the match is being hosted
+      - name: aimAssistOn
+        description: Whether aim assist is on for the match
+      - name: serverId
+        description: The ID of the server hosting the match
+
+  - name: inventorydrop
+    description: Extracted inventory drop data from raw JSON for 'inventoryDrop' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: name
+        description: The name of the player who dropped the item
+      - name: teamId
+        description: The team ID of the player who dropped the item
+      - name: nucleusHash
+        description: The nucleus hash of the player who dropped the item
+      - name: hardwareName
+        description: The hardware name of the player who dropped the item
+      - name: character
+        description: The character of the player who dropped the item
+      - name: item
+        description: The item that was dropped
+      - name: quantity
+        description: The quantity of the item that was dropped
+
+  - name: grenadethrown
+    description: Extracted grenade thrown data from raw JSON for 'grenadeThrown' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: name
+        description: The name of the player who threw the grenade
+      - name: teamId
+        description: The team ID of the player who threw the grenade
+      - name: nucleusHash
+        description: The nucleus hash of the player who threw the grenade
+      - name: hardwareName
+        description: The hardware name of the player who threw the grenade
+      - name: character
+        description: The character of the player who threw the grenade
+      - name: linkedEntity
+        description: The linked entity of the grenade that was thrown
+
+  - name: gamestatechanged
+    description: Extracted game state change data from raw JSON for 'gameStateChanged' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the event
+      - name: category
+        description: The category of the event (always 'gameStateChanged' for this model)
+      - name: state
+        description: The new state of the game
+        
+  - name: character_selection
+    description: Extracted data from raw JSON for 'characterSelected' category
+    columns:
+      - name: timestamp
+        description: The timestamp of the character selection event
+      - name: player_name
+        description: The name of the player
+      - name: player_teamId
+        description: The team ID that the player belongs to
+      - name: player_pos_x
+        description: The X-coordinate of the player's position
+      - name: player_pos_y
+        description: The Y-coordinate of the player's position
+      - name: player_pos_z
+        description: The Z-coordinate of the player's position
+      - name: player_nucleusHash
+        description: The nucleus hash of the player
+      - name: player_hardwareName
+        description: The hardware name of the player
+      - name: player_character
+        description: The character selected by the player
+      - name: player_skin
+        description: The skin used by the player for the selected character

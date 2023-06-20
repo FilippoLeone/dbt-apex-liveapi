@@ -5,7 +5,7 @@ WITH source_data AS (
     `data` AS jsondata
   FROM {{ ref('json_table') }}
 ),
-parsed_data (
+parsed_data AS (
   SELECT
     TIMESTAMP_SECONDS(CAST(JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS INT)) AS timestamp,
     JSON_EXTRACT_SCALAR(jsondata, '$.observer.name') AS observer_name,

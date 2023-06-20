@@ -8,7 +8,7 @@ WITH source_data AS (
 
 parsed_data AS (
   SELECT
-    JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS timestamp,
+    TIMESTAMP_SECONDS(JSON_EXTRACT_SCALAR(jsondata, '$.timestamp')) AS timestamp,
     JSON_EXTRACT_SCALAR(jsondata, '$.category') AS category,
     JSON_EXTRACT_SCALAR(jsondata, '$.gameVersion') AS gameVersion,
     STRUCT(

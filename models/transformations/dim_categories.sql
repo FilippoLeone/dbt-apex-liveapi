@@ -18,3 +18,4 @@ category_types AS (
 )
 
 SELECT * FROM category_types
+ORDER BY 1

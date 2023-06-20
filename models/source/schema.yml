@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: pubsub
-    database: "{{ var('gcp_project_id') }}"
+    database: gtm-mcv3pd5-ytbin
     schema: pubsub
     tables:
       - name: apex

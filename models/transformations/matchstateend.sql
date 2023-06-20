@@ -8,7 +8,7 @@ WITH source_data AS (
 
 parsed_data AS (
   SELECT
-    TIMESTAMP_SECONDS(JSON_EXTRACT_SCALAR(jsondata, '$.timestamp')) AS timestamp,
+    TIMESTAMP_SECONDS(CAST(JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS INT)) AS timestamp,
     JSON_EXTRACT_SCALAR(jsondata, '$.state') AS state,
     JSON_EXTRACT_ARRAY(jsondata, '$.winners') AS winners_json
   FROM source_data

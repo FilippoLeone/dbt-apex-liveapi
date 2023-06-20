@@ -6,9 +6,10 @@ WITH source_data AS (
   FROM {{ ref('json_table') }}
 ),
 
-parsed_data AS (
+parsed_data AS (    timestamp) as timestamp,
+
   SELECT
-    JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS timestamp,
+    TIMESTAMP_SECONDS(CAST(JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS INT)) AS timestamp,
     JSON_EXTRACT_SCALAR(jsondata, '$.observer.name') AS observer_name,
     CAST(JSON_EXTRACT_SCALAR(jsondata, '$.observer.teamId') AS INT64) AS observer_teamId,
     JSON_EXTRACT_SCALAR(jsondata, '$.observer.pos.x') AS observer_pos_x,

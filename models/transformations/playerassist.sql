@@ -8,7 +8,7 @@ WITH source_data AS (
 
 parsed_data AS (
   SELECT
-    JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS timestamp,
+    TIMESTAMP_SECONDS(CAST(JSON_EXTRACT_SCALAR(jsondata, '$.timestamp') AS INT)) AS timestamp,
     JSON_EXTRACT_SCALAR(jsondata, '$.assistant.name') AS assistant_name,
     CAST(JSON_EXTRACT_SCALAR(jsondata, '$.assistant.teamId') AS INT64) AS assistant_teamId,
     JSON_EXTRACT_SCALAR(jsondata, '$.assistant.pos.x') AS assistant_pos_x,

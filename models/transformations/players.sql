@@ -6,15 +6,22 @@ WITH source_data AS (
   FROM {{ ref('json_table') }}
 ),
 
-parsed_data AS (
+players AS (
   SELECT
     JSON_EXTRACT_SCALAR(jsondata, '$.playerToken') AS playerToken,
-    JSON_EXTRACT_SCALAR(jsondata, '$.players[0].name') AS name,
-    CAST(JSON_EXTRACT_SCALAR(jsondata, '$.players[0].teamId') AS INT64) AS teamId,
-    JSON_EXTRACT_SCALAR(jsondata, '$.players[0].nucleusHash') AS nucleusHash,
-    JSON_EXTRACT_SCALAR(jsondata, '$.players[0].hardwareName') AS hardwareName
+    JSON_EXTRACT_ARRAY(jsondata, '$.players') AS players_array
   FROM source_data
+),
+
+players_unnested AS (
+  SELECT
+    playerToken,
+    JSON_EXTRACT_SCALAR(player, '$.name') AS name,
+    CAST(JSON_EXTRACT_SCALAR(player, '$.teamId') AS INT64) AS teamId,
+    JSON_EXTRACT_SCALAR(player, '$.nucleusHash') AS nucleusHash,
+    JSON_EXTRACT_SCALAR(player, '$.hardwareName') AS hardwareName
+  FROM players, UNNEST(players_array) AS player
 )
 
-SELECT * FROM parsed_data
+SELECT * FROM players_unnested
 WHERE playerToken IS NOT NULL

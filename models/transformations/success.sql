@@ -1,6 +1,7 @@
+{{ config(materialized='table') }}
+
 WITH source_data AS (
   SELECT
-    `data`,
     `data` AS jsondata
   FROM {{ ref('json_table') }}
 ),

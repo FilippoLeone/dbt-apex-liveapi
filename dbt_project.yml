@@ -10,7 +10,7 @@ config-version: 2
 profile: 'apexliveapi'
 
 vars:
-  gcp_project_id: ${{ secrets.DBT_GOOGLE_PROJECT }}
+  gcp_project_id: ${{ env.DBT_GOOGLE_PROJECT }}
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
@@ -35,6 +35,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   apexliveapi:
     # Config indicated by + and applies to all files under models/example/
-    example:
+    output:
       +materialized: view
 

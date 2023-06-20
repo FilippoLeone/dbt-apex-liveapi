@@ -4,7 +4,8 @@ sources:
   - name: pubsub
     tables:
       - name: apex
-      description: Players data from raw JSON
+      description: >
+        Players data from raw JSON
       columns:
         - name: data
           description: The raw json data

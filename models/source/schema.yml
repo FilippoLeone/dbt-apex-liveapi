@@ -3,10 +3,6 @@ version: 2
 sources:
   - name: pubsub
     tables:
-      - name: apex
-      description: >
-        Players data from raw JSON
+  - name: apex
       columns:
         - name: data
-          description: The raw json data
-

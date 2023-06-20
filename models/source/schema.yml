@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: pubsub
-    database: gtm-mcv3pd5-ytbin
+    database: {{ env_var('DBT_GOOGLE_PROJECT') }}
     schema: pubsub
     tables:
       - name: apex
